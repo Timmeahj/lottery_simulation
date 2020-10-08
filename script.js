@@ -120,6 +120,8 @@ function printResults(results) {
     for(let i = 1; i < 46; i++){
         rows[i-1].children[1].innerHTML = getOccurrence(results, i);
     }
+    displayResults();
+    showButtons();
     updateAmount();
 }
 
@@ -134,10 +136,14 @@ function getOccurrence(arr, value) {
 function checkForCombination(combo){
     let found = false;
     let timesFound = 0;
+    let firstTime;
     for (let i = 0; i < totalResults.length; i++){
         if(arraysEqual(totalResults[i], combo)){
+            if(timesFound === 0){
+                firstTime = i+1;
+            }
             timesFound++;
-            document.getElementById('feedback').innerHTML = "combination found after "+(i+1)+" iterations.<br>The result has been found "+timesFound+" time(s)";
+            document.getElementById('feedback').innerHTML = "The combination  has been found after "+firstTime+" iterations.<br>The result has been found "+timesFound+" time(s)";
             document.getElementById('feedback').style.borderBottomColor = getRandomColor();
             found = true;
         }
@@ -182,11 +188,6 @@ function getRandomColor() {
     }
     return color;
 }
-
-document.getElementById('getAllResults').addEventListener("click", function () {
-    displayResults();
-    showButtons();
-});
 
 let page = 1;
 
