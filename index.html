@@ -2,28 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <style type="text/css">
+        body{
+            max-width: 800px;
+            margin: 50px auto;
+        }
         .tg  {border-collapse:collapse;border-spacing:0;}
         .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
             overflow:hidden;padding:10px 5px;word-break:normal;}
         .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
             font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
         .tg .tg-0lax{text-align:left;vertical-align:top}
+        #lotteryBox{
+            border: 1px solid black;
+            width: 100%;
+            float: left;
+        }
+        #feedback{
+            border-bottom: 3px solid white;
+        }
+        .ball{
+            border: 1px solid red;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            float: left;
+            text-align: center;
+            line-height: 50px;
+        }
+        #ballsDrawn{
+            border: 1px solid black;
+            float: left;
+            height: 50px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-<div id="title">Lottery simulation</div>
+<div id="title">Lottery simulation</div><br>
+<div class="text">The maximum amount of times you can run multiple lottery draws with this application is 1 million. If you choose to run it more than that it will limit to 1 million. Since the total amount of combinations you can make, regardless of order is around 8 million (8145060) most of the time you'll find one specific combination after running the maximum 8 times.</div><br>
+<div>If you want to see how a single lottery draw works with visual feedback:<button id="demo">Go</button></div><br>
+<div id="lotteryBox">
+</div>
+<div id="ballsDrawn"></div>
+<div class="float">
 <label>
+    If you want to run the lottery a lot of times:
     <input id="amount" type="text" placeholder="Amount of times">
 </label>
-<button id="run">Go</button>
+<button id="run">Go</button><br><br>
 <label>
-    <input id="combo" type="text" placeholder="Combination">
+    If you want to check if there's a combination in all of the results:
+    <input id="combo" type="text" placeholder="1 2 3 4 5 6">
 </label>
-<button id="findCombo">Check for combination</button>
+<button id="findCombo">Go</button><br>
 <!--<button id="goUntilCombo">Go until found</button>-->
-<div id="feedback"></div>
+<table>
+    <tbody>
+    <tr>
+        <td>Did we find it?</td>
+        <td id="feedback"></td>
+    </tr>
+    </tbody>
+</table><br>
+    If for whatever reason you want to check out all of the lottery draws:<button id="getAllResults">Go</button><br>
+    Watch out, too many results and your device might explode lol<br>
+    <ol id="allResults"></ol><br>
+
+<br>In here you'll find how many times each number has been drawn<br>
 <div id="result">
     <table class="tg">
         <thead>
@@ -215,6 +264,8 @@
         </tr>
         </tbody>
     </table>
+</div><br>
+
 </div>
 <script src="script.js"></script>
 </body>
