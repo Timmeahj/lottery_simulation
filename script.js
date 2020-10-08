@@ -120,9 +120,9 @@ function printResults(results) {
     for(let i = 1; i < 46; i++){
         rows[i-1].children[1].innerHTML = getOccurrence(results, i);
     }
+    updateAmount();
     displayResults();
     showButtons();
-    updateAmount();
 }
 
 function getOccurrence(arr, value) {
