@@ -95,7 +95,7 @@ function lotteryDraw() {
     for(let i = 0; i < 6; i++){
         //HET BEGIN
         //in number zit nu een willekeurig balletje van 1 - 45, zonder de vorige getrokken balletjes
-        let number = numbers[getRandomInt(0, numbers.length-1)];
+        let number = numbers[randrange(0, numbers.length)];
         //In de lijst steken we dit nummer
         resultList.push(number);
         //Dit nummer gaan we nu uit onze glazen bol met alle nummertjes halen
@@ -192,3 +192,28 @@ document.getElementById('getAllResults').addEventListener("click", function () {
     }
 });
 
+function randrange(min, max) {
+    var range = max - min;
+    if (range <= 0) {
+        throw new Exception('max must be larger than min');
+    }
+    var requestBytes = Math.ceil(Math.log2(range) / 8);
+    if (!requestBytes) { // No randomness required
+        return min;
+    }
+    var maxNum = Math.pow(256, requestBytes);
+    var ar = new Uint8Array(requestBytes);
+
+    while (true) {
+        window.crypto.getRandomValues(ar);
+
+        var val = 0;
+        for (var i = 0;i < requestBytes;i++) {
+            val = (val << 8) + ar[i];
+        }
+
+        if (val < maxNum - maxNum % range) {
+            return min + (val % range);
+        }
+    }
+}
