@@ -37,6 +37,7 @@
             float: left;
             text-align: center;
             line-height: 50px;
+            margin: 5px;
         }
         .ball2{
             border: 1px solid red;
@@ -52,9 +53,17 @@
         #ballsDrawn{
             border: 1px solid black;
             float: left;
-            height: 50px;
+            height: 60px;
             width: 100%;
             margin-bottom: 20px;
+        }
+        #previous{
+            display: none;
+            float: left;
+        }
+        #next{
+            display: none;
+            float: left;
         }
     </style>
 </head>
@@ -87,7 +96,8 @@
     </tbody>
 </table><br>
     If for whatever reason you want to check out all of the lottery draws:<button id="getAllResults">Go</button><br>
-    Watch out, too many results and your device might explode lol<br>
+    <br>
+    <button id="previous">previous</button><button id="next">next</button><br>
     <ol id="allResults"></ol><br>
 
 <br>In here you'll find how many times each number has been drawn<br>

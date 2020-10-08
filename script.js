@@ -173,18 +173,26 @@ function arraysEqual(a, b) {
 }
 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
 }
 
 document.getElementById('getAllResults').addEventListener("click", function () {
+    displayResults();
+    showButtons();
+});
+
+let page = 1;
+
+function displayResults(){
+    showButtons();
     let allResultsBox = document.getElementById("allResults");
     allResultsBox.innerHTML = "";
-    for (let i = 0; i < totalResults.length; i++) {
+    for (let i = (page-1)*100; i < page*100; i++) {
         let drawing = document.createElement("li");
         drawing.innerHTML = i+1+". ";
         for(let j = 0; j < totalResults[i].length; j++){
@@ -192,7 +200,34 @@ document.getElementById('getAllResults').addEventListener("click", function () {
         }
         allResultsBox.appendChild(drawing);
     }
+}
+
+document.getElementById('next').addEventListener('click', function () {
+    next();
 });
+
+document.getElementById('previous').addEventListener('click', function () {
+    previous();
+});
+
+function next(){
+    if(page < totalResults.length/100){
+        page++;
+    }
+    displayResults();
+}
+
+function previous() {
+    if(page > 1){
+        page--;
+    }
+    displayResults();
+}
+
+function showButtons() {
+    document.getElementById('next').style.display = "block";
+    document.getElementById('previous').style.display = "block";
+}
 
 function randrange(min, max) {
     var range = max - min;
