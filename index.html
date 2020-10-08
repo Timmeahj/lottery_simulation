@@ -24,6 +24,11 @@
         #feedback{
             border-bottom: 3px solid white;
         }
+        li{
+            padding: 20px;
+            border: 1px solid black;
+            display: flex;
+        }
         .ball{
             border: 1px solid red;
             border-radius: 50%;
@@ -32,6 +37,17 @@
             float: left;
             text-align: center;
             line-height: 50px;
+        }
+        .ball2{
+            border: 1px solid red;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            line-height: 50px;
+            display: flex;
+            margin-left: 10px;
+            text-indent: 18px;
         }
         #ballsDrawn{
             border: 1px solid black;
@@ -54,7 +70,8 @@
     If you want to run the lottery a lot of times:
     <input id="amount" type="text" placeholder="Amount of times">
 </label>
-<button id="run">Go</button><br><br>
+<button id="run">Go</button><br>
+    At the moment, you have simulated the lottery <span id="amountSpan">0</span> times<br><br>
 <label>
     If you want to check if there's a combination in all of the results:
     <input id="combo" type="text" placeholder="1 2 3 4 5 6">

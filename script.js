@@ -120,6 +120,7 @@ function printResults(results) {
     for(let i = 1; i < 46; i++){
         rows[i-1].children[1].innerHTML = getOccurrence(results, i);
     }
+    updateAmount();
 }
 
 function getOccurrence(arr, value) {
@@ -185,8 +186,9 @@ document.getElementById('getAllResults').addEventListener("click", function () {
     allResultsBox.innerHTML = "";
     for (let i = 0; i < totalResults.length; i++) {
         let drawing = document.createElement("li");
+        drawing.innerHTML = i+1+". ";
         for(let j = 0; j < totalResults[i].length; j++){
-            drawing.innerText += totalResults[i][j]+" - ";
+            drawing.innerHTML += "<div class='ball2'>"+totalResults[i][j]+"</div>";
         }
         allResultsBox.appendChild(drawing);
     }
@@ -216,4 +218,8 @@ function randrange(min, max) {
             return min + (val % range);
         }
     }
+}
+
+function updateAmount() {
+    document.getElementById('amountSpan').innerHTML = totalResults.length+"";
 }
