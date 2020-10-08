@@ -133,9 +133,11 @@ function getOccurrence(arr, value) {
 
 function checkForCombination(combo){
     let found = false;
+    let timesFound = 0;
     for (let i = 0; i < totalResults.length; i++){
         if(arraysEqual(totalResults[i], combo)){
-            document.getElementById('feedback').innerHTML = "combination found after "+(i+1)+" iterations";
+            timesFound++;
+            document.getElementById('feedback').innerHTML = "combination found after "+(i+1)+" iterations.<br>The result has been found "+timesFound+" time(s)";
             document.getElementById('feedback').style.borderBottomColor = getRandomColor();
             found = true;
         }
